@@ -14,26 +14,33 @@
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="Auto"/>
       </Grid.RowDefinitions>
+
       <local:IconButton Grid.Row="0"
-                      Content="Discord" 
-                      Icon="ms-appx:///Assets/Icons/discordicon.png"
-                      HorizontalAlignment="Left"
-                      Margin="0,0,0,20"/>
+                        Margin="0,0,0,10"
+                        Content="Symbol Icon">
+        <local:IconButton.IconSource>
+          <SymbolIconSource Symbol="Add"/>
+        </local:IconButton.IconSource>
+      </local:IconButton>
+
+      <!-- Using FontIconSource with a more common font -->
       <local:IconButton Grid.Row="1"
-                      Content="GitHub" 
-                      Icon="ms-appx:///Assets/Icons/github.png"
-                      HorizontalAlignment="Left"
-                      Margin="0,0,0,20"/>
-      <local:IconButton Grid.Row="2" 
-                      Content="Twitter" 
-                      Icon="ms-appx:///Assets/Icons/x.png"
-                      HorizontalAlignment="Left"
-                      Margin="0,0,0,20"/>
-      <local:IconButton Grid.Row="3" 
-                      Content="Docs" 
-                      Icon="ms-appx:///Assets/Icons/unologo.png"
-                      HorizontalAlignment="Left"
-                      Margin="0,0,0,20"/>
+                        Margin="0,0,0,10"
+                        Content="Font Icon">
+        <local:IconButton.IconSource>
+          <FontIconSource Glyph="&#x2665;" FontFamily="Segoe UI"/>
+        </local:IconButton.IconSource>
+      </local:IconButton>
+
+      <!-- Using BitmapIconSource -->
+      <local:IconButton Grid.Row="2"
+                        Margin="0,0,0,10"
+                        Content="Bitmap Icon">
+        <local:IconButton.IconSource>
+          <BitmapIconSource UriSource="ms-appx:///Assets/Icons/discordicon.png"/>
+        </local:IconButton.IconSource>
+      </local:IconButton>
+      
     </Grid>
   </ScrollViewer>
 </Page>

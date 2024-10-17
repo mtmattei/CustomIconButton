@@ -9,17 +9,42 @@ using Uno.Themes;
 namespace CustomButton;
 public class IconButton : Button
 {
-    public static readonly DependencyProperty IconProperty =
-        DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(IconButton), new PropertyMetadata(null));
+    public static readonly DependencyProperty IconSourceProperty =
+       DependencyProperty.Register(nameof(IconSource), typeof(IconSource), typeof(IconButton),
+                new PropertyMetadata(null, OnIconSourceChanged));
 
-    public ImageSource Icon
+
+    public IconSource IconSource
     {
-        get => (ImageSource)GetValue(IconProperty);
-        set => SetValue(IconProperty, value);
+        get => (IconSource)GetValue(IconSourceProperty);
+        set => SetValue(IconSourceProperty, value);
     }
 
     public IconButton()
     {
         DefaultStyleKey = typeof(IconButton);
     }
+
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+        UpdateIcon();
+    }
+
+    private static void OnIconSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is IconButton iconButton)
+        {
+            iconButton.UpdateIcon();
+        }
+    }
+
+    private void UpdateIcon()
+    {
+        if (GetTemplateChild("IconElement") is IconSourceElement iconElement)
+        {
+            iconElement.IconSource = IconSource;
+        }
+    }
 }
+
