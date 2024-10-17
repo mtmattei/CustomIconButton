@@ -1,0 +1,83 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CustomButton"
+    xmlns:um="using:Uno.Material">
+
+  <!-- Color Overrides -->
+  <Color x:Key="PrimaryColor">#BAB0FF</Color>
+  <Color x:Key="SecondaryColor">#B3D9FF</Color>
+  <!-- Add more color overrides as needed -->
+
+  <!-- MaterialTheme color resources override -->
+  <SolidColorBrush x:Key="MaterialPrimaryBrush" Color="{StaticResource PrimaryColor}" />
+  <SolidColorBrush x:Key="MaterialSecondaryBrush" Color="{StaticResource SecondaryColor}" />
+  <!-- Add more brush overrides as needed -->
+
+  <!-- Existing IconButton Style -->
+  <Style TargetType="local:IconButton">
+    <Setter Property="Background" Value="{StaticResource MaterialPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource MaterialPrimaryBrush}"/>
+    <Setter Property="Foreground" Value="Black"/>
+    <Setter Property="BorderThickness" Value="10"/>
+    <Setter Property="Padding" Value="12,12,12,12"/>
+    <Setter Property="CornerRadius" Value="4"/>
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+    <Setter Property="FontWeight" Value="Bold"/>
+    <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+    <Setter Property="UseSystemFocusVisuals" Value="True"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:IconButton">
+          <Grid x:Name="RootGrid">
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="PointerOver">
+                  <VisualState.Setters>
+                    <Setter Target="BorderElement.Background" Value="#CD855B"/>
+                    <Setter Target="BorderElement.BorderBrush" Value="#CD855B"/>
+                    <Setter Target="ContentPresenter.Foreground" Value="Black"/>
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Pressed">
+                  <VisualState.Setters>
+                    <Setter Target="BorderElement.Background" Value="#99CCFF"/>
+                    <Setter Target="ContentPresenter.Foreground" Value="Black"/>
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Disabled">
+                  <VisualState.Setters>
+                    <Setter Target="BorderElement.Background" Value="#F0F0F0"/>
+                    <Setter Target="ContentPresenter.Foreground" Value="Gray"/>
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border x:Name="BorderElement"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+              <StackPanel Orientation="Horizontal">
+                <Image Source="{TemplateBinding Icon}" 
+                                       Width="20" Height="20" 
+                                       Margin="8,0,8,0" 
+                                       VerticalAlignment="Center"/>
+                <ContentPresenter x:Name="ContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  AutomationProperties.AccessibilityView="Raw"/>
+              </StackPanel>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

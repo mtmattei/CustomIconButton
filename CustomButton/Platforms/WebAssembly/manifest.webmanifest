@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "CustomButton",
+  "display": "standalone",
+  "name": "CustomButton",
+  "short_name": "CustomButton",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
