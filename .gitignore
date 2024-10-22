@@ -401,3 +401,4 @@ FodyWeavers.xsd
 solution-config.props
 # Publish Profiles
 !**/Properties/PublishProfiles/*.pubxml
+/CustomButton/Assets/Discord Icon_files/woff2.css
