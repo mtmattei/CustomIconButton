@@ -4,11 +4,6 @@
     xmlns:local="using:CustomButton"
     xmlns:um="using:Uno.Material">
 
-  <!-- Color Overrides -->
-  <Color x:Key="PrimaryColor">#BAB0FF</Color>
-  <Color x:Key="SecondaryColor">#B3D9FF</Color>
-  <!-- Add more color overrides as needed -->
-
   <!-- MaterialTheme color resources override -->
   <SolidColorBrush x:Key="MaterialPrimaryBrush" Color="{StaticResource PrimaryColor}" />
   <SolidColorBrush x:Key="MaterialSecondaryBrush" Color="{StaticResource SecondaryColor}" />
@@ -19,7 +14,7 @@
     <Setter Property="Background" Value="{StaticResource MaterialPrimaryBrush}"/>
     <Setter Property="BorderBrush" Value="{StaticResource MaterialPrimaryBrush}"/>
     <Setter Property="Foreground" Value="Black"/>
-    <Setter Property="BorderThickness" Value="10"/>
+    <Setter Property="BorderThickness" Value="4"/>
     <Setter Property="Padding" Value="12,12,12,12"/>
     <Setter Property="CornerRadius" Value="4"/>
     <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -32,14 +27,15 @@
       <Setter.Value>
         <ControlTemplate TargetType="local:IconButton">
           <Grid x:Name="RootGrid">
+            
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="CommonStates">
                 <VisualState x:Name="Normal"/>
                 <VisualState x:Name="PointerOver">
                   <VisualState.Setters>
-                    <Setter Target="BorderElement.Background" Value="#CD855B"/>
-                    <Setter Target="BorderElement.BorderBrush" Value="#CD855B"/>
-                    <Setter Target="ContentPresenter.Foreground" Value="Black"/>
+                    <Setter Target="BorderElement.Background" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
+                    <Setter Target="BorderElement.BorderBrush" Value="{ThemeResource ButtonBorderBrushPointerOver}"/>
+                    <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundPointerOver}"/>
                   </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Pressed">
@@ -64,7 +60,8 @@
               <StackPanel Orientation="Horizontal">
                 <IconSourceElement x:Name="IconElement"
                                                IconSource="{TemplateBinding IconSource}"
-                                               Width="24" Height="24" 
+                                               Width="{TemplateBinding IconSize}"
+                                               Height="{TemplateBinding IconSize}"
                                                Margin="0,0,8,0" 
                                                VerticalAlignment="Center"/>
                 <ContentPresenter x:Name="ContentPresenter"
