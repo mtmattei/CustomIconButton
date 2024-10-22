@@ -4,7 +4,10 @@
     xmlns:local="using:CustomButton"
     xmlns:um="using:Uno.Material">
 
-
+  <!-- Color Overrides -->
+  <Color x:Key="PrimaryColor">#BAB0FF</Color>
+  <Color x:Key="SecondaryColor">#B3D9FF</Color>
+  <!-- Add more color overrides as needed -->
 
   <!-- MaterialTheme color resources override -->
   <SolidColorBrush x:Key="MaterialPrimaryBrush" Color="{StaticResource PrimaryColor}" />
